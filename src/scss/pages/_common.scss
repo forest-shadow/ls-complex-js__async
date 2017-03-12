@@ -1,0 +1,27 @@
+/*********************************************
+ * Common Styles
+ *********************************************/
+body {
+  margin: 0;
+}
+
+button {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.controls-panel {
+  @include size(100% 80px);
+  padding: 20px;
+  background: #2CC990;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.cities-list {
+  @include size(100% calc(100% - 80px) );
+  padding: 20px;
+}
