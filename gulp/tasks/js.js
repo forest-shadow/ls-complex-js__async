@@ -6,16 +6,23 @@
 module.exports = function() {
   $.gulp.task( 'js', function() {
     return $.streamqueue( { objectMode: true },
+        $.gulp.src( [ 'src/js/custom/main.js' ] )
+            .pipe( $.gp.plumber({errorHandler: (err) => {
+                $.gp.notify.onError({
+                    title:    "Gulp",
+                    subtitle: "Failure!",
+                    message:  "Error: <%= error.message %>",
+                    sound:    "Beep"
+                })(err);
 
-        $.gulp.src( [ 'src/js/vendor/**/*.js' ] ),
-
-        $.gulp.src( [ 'src/js/custom/*.js' ] )
-
-        .pipe( $.gp.sourcemaps.init() )
-        .pipe( $.gp.concat( 'all.js' ) )
-        .pipe( $.gp.sourcemaps.write( '.' ) )
-        //.pipe($.gp.uglify())
-        .pipe( $.gulp.dest( './dist/' ) )
-        .pipe( $.browserSync.stream() ) );
+                this.emit('end');
+            }}) )
+            .pipe( $.gp.browserify() )
+            .pipe( $.gp.babel({
+                presets: ['es2015']
+            }) )
+            .pipe( $.gp.rename('all.js') )
+            .pipe( $.gulp.dest('./dist') )
+            .pipe( $.browserSync.stream() ));
   });
 };
