@@ -19,13 +19,10 @@ Download city with the help of AJAX `https://raw.githubusercontent.com/smelukov/
 ## HW3:
 Create a page with a text input.
 
-After loading the page, load the list of cities using AJAX.
-
-When you enter text in the text input, below the text input display a list of cities, names of which include the text entered.
-
-Use of promises is necessary.
-
-Prohibited the use of any libraries (including jQuery) and frameworks.
+* After loading the page, load the list of cities using AJAX.
+* When you enter text in the text input, below the text input display a list of cities, names of which include the text entered.
+* Use of promises is necessary.
+* Prohibited the use of any libraries (including jQuery) and frameworks.
 
 ## Install
 
